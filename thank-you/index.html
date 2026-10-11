@@ -364,6 +364,735 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
     }
+  
+    /* ── LANDER SECTIONS (styles copied from the main landing page, scoped to .lp) ── */
+.lp *, .lp *::before, .lp *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.lp {
+    
+    --bg:        #ffffff;   
+    --bg-alt:    #f7f8f8;   
+    --bg-card:   #f7f8f8;
+    --ink:       #1f2d33;   
+    --ink-soft:  #34454c;
+    --ink-muted: #5f7076;
+    --ink-faint: #8a9ba0;
+    --hairline:  #d9e5e6;   
+    --accent:    #3d7775;   
+    --accent-dark: #2f5e5c;
+    --accent-light: #74bbb7; 
+    --white:     #ffffff;
+
+    --display: 'Futura', 'Futura PT', 'Jost', 'Century Gothic', sans-serif;
+    --body:    Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  }
+.lp {
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+.lp a { color: inherit; text-decoration: none; }
+.lp img { max-width: 100%; display: block; }
+.lp .offer-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--ink);
+    color: var(--white);
+    padding: 10px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    font-family: var(--display);
+  }
+.lp .offer-bar .offer-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+  }
+.lp .offer-bar .offer-copy { font-size: 13px; font-weight: 500; color: var(--white); opacity: 0.85; }
+@media (max-width: 640px) {
+.lp .offer-bar { padding: 8px 12px; gap: 2px 10px; }
+.lp .offer-bar .offer-copy { font-size: 12.5px; }
+}
+.lp .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.lp .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.lp .hero { padding-top: 24px; padding-bottom: 32px; text-align: center; }
+.lp h1 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5.6vw, 58px);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    max-width: 780px;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+@media (max-width: 480px) {
+.lp h1 { font-size: 22px; line-height: 1.15; letter-spacing: -0.02em; }
+}
+.lp h1 .accent-text { color: var(--accent); }
+.lp .hero-sub {
+    font-family: var(--body);
+    font-size: clamp(16px, 1.7vw, 19px);
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 760px;
+    margin: 10px auto 0; 
+  }
+.lp .hero-sub strong { font-weight: 700; color: var(--ink); }
+.lp .sub-br { display: none; }
+@media (min-width: 450px) and (max-width: 860px) {
+.lp .hero-sub { white-space: nowrap; font-size: min(19px, calc((100vw - 48px) / 28.6)); }
+}
+@media (max-width: 449px) {
+.lp .sub-br { display: inline; }
+}
+.lp h1 .accent-underline {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
+  }
+.lp .lead {
+    font-family: var(--body);
+    font-size: clamp(16px, 1.7vw, 19px);
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+.lp .lead strong { color: var(--ink); font-weight: 600; }
+.lp .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    background: var(--accent);
+    color: var(--white);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    padding: 16px 30px;
+    border-radius: 8px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(61,119,117,0.28);
+  }
+.lp .hero-cta:hover { transform: translateY(-1px); background: var(--accent-dark); box-shadow: 0 14px 30px rgba(61,119,117,0.34); }
+.lp .hero-cta .arrow { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.lp .hero-cta:hover .arrow { transform: translateX(3px); }
+.lp .hero-micro {
+    display: block;
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    margin-top: 14px;
+  }
+.lp .vsl-wrap { max-width: 760px; margin: 14px auto 32px; }
+.lp .vsl-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1802 / 1080; 
+    background: #1f2d33;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(31,45,51,0.22);
+  }
+.lp .vsl-frame video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #1f2d33;
+  }
+.lp section { padding: 72px 0; border-top: 1px solid var(--hairline); }
+.lp section.alt { background: var(--bg-alt); }
+.lp .section-label {
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 800;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+.lp h2 {
+    font-family: var(--display);
+    font-size: clamp(28px, 4.2vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.1;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 16px;
+  }
+.lp .section-sub {
+    font-family: var(--body);
+    font-size: clamp(15px, 1.5vw, 17px);
+    color: var(--ink-muted);
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 44px;
+  }
+.lp .value-name + .value-desc { margin-top: 10px; }
+.lp .flow { display: flex; align-items: stretch; justify-content: center; gap: 14px; max-width: 900px; margin: 0 auto; }
+.lp .flow-step { flex: 1 1 0; background: var(--bg-card); border: 1px solid var(--hairline); border-radius: 16px; padding: 22px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity .45s ease, transform .45s ease, background .5s ease, border-color .5s ease, box-shadow .5s ease; }
+.lp .flow-mid { flex: 1.5 1 0; }
+.lp .flow-tag { font-family: var(--display); font-size: 12.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.lp .flow-amount { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 5vw, 56px); line-height: 1; color: var(--ink); transition: color .5s ease; }
+.lp .flow-cap { font-family: var(--body); font-size: 15px; color: var(--ink-muted); margin-top: 10px; transition: color .5s ease; }
+.lp .flow-dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; width: 100%; max-width: 260px; }
+.lp .flow-dots span { aspect-ratio: 1; border-radius: 50%; background: var(--accent); transition: background .25s ease, transform .25s ease; }
+.lp .flow-arrow { align-self: center; font-family: var(--display); font-weight: 800; font-size: 30px; color: var(--accent); transition: opacity .35s ease, transform .35s ease; }
+.lp .flow-out { background: var(--accent); border-color: var(--accent); box-shadow: 0 14px 30px rgba(61,119,117,0.28); }
+.lp .flow-out .flow-tag { color: #cfe8e6; }
+.lp .flow-out .flow-amount, .lp .flow-out .flow-cap { color: #fff; }
+.lp .flow.anim .flow-step, .lp .flow.anim .flow-arrow { opacity: 0; transform: translateY(10px); }
+.lp .flow.anim .flow-step.show, .lp .flow.anim .flow-arrow.show { opacity: 1; transform: none; }
+.lp .flow.anim .flow-dots span { background: var(--hairline); }
+.lp .flow.anim .flow-dots span.on { background: var(--accent); transform: scale(1.15); }
+.lp .flow.anim .flow-dots span.on.settled { transform: none; }
+.lp .flow.anim .flow-out:not(.paid) { background: var(--bg-card); border-color: var(--hairline); box-shadow: none; }
+.lp .flow.anim .flow-out:not(.paid) .flow-tag { color: var(--accent); }
+.lp .flow.anim .flow-out:not(.paid) .flow-amount { color: var(--ink); }
+.lp .flow.anim .flow-out:not(.paid) .flow-cap { color: var(--ink-muted); }
+.lp .flow-out.paid { animation: flow-pop .5s ease; }
+@keyframes flow-pop { 0% { transform: scale(1); } 45% { transform: scale(1.07); } 100% { transform: scale(1); } }
+@media (max-width: 700px) {
+.lp .flow { flex-direction: column; align-items: center; gap: 8px; }
+.lp .flow-step { width: 100%; max-width: 340px; flex: none; padding: 18px; }
+.lp .flow-arrow { transform: rotate(90deg); }
+.lp .flow.anim .flow-arrow { transform: rotate(90deg); }
+.lp .flow.anim .flow-arrow.show { transform: rotate(90deg); }
+}
+.lp .rules-title { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.005em; font-size: clamp(20px, 2.6vw, 26px); color: var(--ink); text-align: center; margin: 0 0 24px; }
+.lp section.belong { background: var(--ink); border-top: none; text-align: center; }
+.lp section.belong h2 { color: #f7f8f8; margin-bottom: 36px; max-width: 900px; text-wrap: balance; }
+.lp .killer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 860px; margin: 0 auto; text-align: left; }
+@media (max-width: 700px) {
+.lp .killer-grid { grid-template-columns: 1fr; }
+}
+.lp .killer-card { background: #2a3c42; border-radius: 14px; padding: 26px; transition: opacity .6s ease, transform .6s ease; }
+.lp .killer-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.lp .killer-top .killer-name { margin-bottom: 0; }
+.lp .killer-grid.anim .killer-card { opacity: 0; transform: translateY(16px); }
+.lp .killer-grid.anim.in .killer-card { opacity: 1; transform: none; }
+.lp .killer-grid.anim .killer-card:nth-child(2) { transition-delay: .15s; }
+.lp .killer-name { font-family: var(--display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--accent-light); margin-bottom: 12px; }
+.lp .killer-pain, .lp .killer-fix { font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.lp .killer-pain { color: #b0bdc1; margin-bottom: 12px; }
+.lp .killer-fix { color: #f7f8f8; }
+.lp .killer-fix strong { font-weight: 700; }
+.lp .killer-close { font-family: var(--display); font-weight: 700; font-size: clamp(18px, 2.2vw, 22px); color: #f7f8f8; margin-top: 32px; }
+.lp .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+@media (max-width: 900px) {
+.lp .proof-grid { grid-template-columns: 1fr 1fr; max-width: 640px; }
+}
+@media (max-width: 480px) {
+.lp .proof-grid { grid-template-columns: 1fr; max-width: 340px; }
+}
+.lp .proof-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 30px rgba(31,45,51,0.06);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    border: 1px solid var(--hairline);
+    padding: 0;
+  }
+.lp .proof-card:hover, .lp .proof-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 36px rgba(31,45,51,0.12);
+    outline: none;
+  }
+.lp .proof-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background: var(--ink);
+    display: block;
+    border-bottom: 1px solid var(--hairline);
+  }
+.lp .proof-card-body { padding: 16px 18px; }
+.lp .proof-card-name {
+    font-family: var(--display);
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+.lp .proof-card-stat {
+    font-family: var(--body);
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+.lp .proof-card-stat strong { color: var(--accent); font-weight: 700; }
+.lp .proof-card-more {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 10px;
+  }
+.lp .story-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+  }
+.lp .story-modal.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.28s ease, visibility 0s linear 0s;
+  }
+.lp .story-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(31,45,51,0.72);
+  }
+.lp .story-modal-panel {
+    position: relative;
+    background: var(--white);
+    border-radius: 18px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    transform: translateY(28px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.26s ease;
+  }
+.lp .story-modal.open .story-modal-panel {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+.lp .story-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(31,45,51,0.85);
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.lp .story-modal-media { position: relative; }
+.lp .story-modal-images {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    background: var(--ink);
+  }
+.lp .story-modal-images img {
+    flex: none;
+    width: 100%;
+    scroll-snap-align: start;
+    max-height: 380px;
+    object-fit: contain;
+    display: block;
+  }
+.lp .story-modal-next {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(31,45,51,0.85);
+    color: #fff;
+    border: none;
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+.lp .story-modal-next:hover { transform: scale(1.06); }
+.lp .story-modal-next[hidden] { display: none; }
+.lp .story-modal-body { padding: 26px 28px 30px; }
+.lp .story-modal-name {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+.lp .story-modal-role {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    margin-top: 3px;
+    margin-bottom: 16px;
+  }
+.lp .story-modal-text {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+.lp .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+@media (max-width: 760px) {
+.lp .rules-grid { grid-template-columns: 1fr; }
+}
+.lp section.rules-dark { background: var(--ink); border-top: none; }
+.lp section.rules-dark h2 { color: #f7f8f8; }
+.lp .rule-card {
+    background: #2a3c42;
+    border-radius: 14px;
+    padding: 28px 24px;
+    text-align: left;
+    transition: opacity .55s ease, transform .55s ease;
+  }
+.lp .rule-top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.lp .rule-icon {
+    width: 56px; height: 56px; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 14px;
+    background: rgba(116,187,183,0.14);
+    color: var(--accent-light);
+  }
+.lp .rule-icon svg { width: 30px; height: 30px; overflow: visible; }
+.lp .rule-icon svg { transition: transform .6s cubic-bezier(.2,1.4,.4,1), opacity .4s ease; }
+.lp .rule-icon .ico-fill { fill: currentColor; stroke: none; transition: opacity .4s ease; }
+.lp .rule-icon .ico-slash { stroke: #f7f8f8; stroke-width: 2.2; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset .45s ease; }
+.lp .rule-icon .ico-spin { transform-origin: 12px 12px; transition: transform .8s ease; }
+.lp .rule-icon .ico-pulse { transform-origin: 12px 12px; animation: rule-pulse 1.8s ease-in-out infinite; }
+@keyframes rule-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.5); } }
+.lp .rule-num {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+  }
+.lp .rule-name {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #f7f8f8;
+    margin-bottom: 6px;
+  }
+.lp .rule-desc { font-family: var(--body); font-size: 14.5px; color: #b0bdc1; }
+.lp .rules-grid.anim .rule-card { opacity: 0; transform: translateY(18px); }
+.lp .rules-grid.anim .rule-card.show { opacity: 1; transform: none; }
+.lp .rules-grid.anim .rule-card:nth-child(2) { transition-delay: .15s; }
+.lp .rules-grid.anim .rule-card:nth-child(3) { transition-delay: .3s; }
+.lp .rules-grid.anim .rule-icon svg { transform: scale(.3) rotate(-25deg); opacity: 0; }
+.lp .rules-grid.anim .rule-icon .ico-slash { stroke-dashoffset: 1; }
+.lp .rules-grid.anim .rule-icon .ico-spin { transform: rotate(-180deg); }
+.lp .rules-grid.anim .rule-icon .ico-fill { opacity: 0; }
+.lp .rules-grid.anim .rule-card.drawn .rule-icon svg { transform: none; opacity: 1; }
+.lp .rules-grid.anim .rule-card.drawn .rule-icon .ico-slash { stroke-dashoffset: 0; }
+.lp .rules-grid.anim .rule-card.drawn .rule-icon .ico-spin { transform: none; }
+.lp .rules-grid.anim .rule-card.drawn .rule-icon .ico-fill { opacity: 1; transition-delay: .5s; }
+.lp .rules-grid.anim .rule-card.drawn .rule-icon .ico-slash { transition-delay: .9s; }
+@media (prefers-reduced-motion: reduce) {
+.lp .rule-icon .ico-pulse { animation: none; }
+}
+.lp .rules-cta { text-align: center; margin-top: 40px; }
+.lp .rules-cta .hero-micro { margin-top: 12px; }
+.lp .coach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+.lp .coach-card { text-align: center; }
+.lp .coach-id { display: block; }
+.lp .coach-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 18px;
+    border: 4px solid var(--white);
+    box-shadow: 0 14px 30px rgba(31,45,51,0.16);
+  }
+.lp .coach-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+.lp .coach-handle { display: block; text-decoration: none; }
+.lp a.coach-handle:hover { text-decoration: underline; text-underline-offset: 3px; }
+.lp .coach-handle {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+.lp .coach-stats { list-style: none; display: inline-block; text-align: left; }
+.lp .coach-stats li {
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--ink-muted);
+    padding: 4px 0;
+    display: flex;
+    gap: 8px;
+  }
+.lp .coach-stats li::before { content: '-'; color: var(--ink-faint); flex-shrink: 0; }
+.lp .coach-stats li strong { color: var(--ink); font-weight: 700; }
+.lp .coach-social {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+.lp .coach-social-link {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+.lp .coach-social-link svg { width: 16px; height: 16px; }
+.lp .coach-social-link:hover { background: var(--ink); color: #fff; transform: translateY(-2px); }
+@media (max-width: 760px) {
+.lp .coach-grid { grid-template-columns: 1fr; max-width: 380px; gap: 26px; }
+.lp .coach-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      width: 100%;
+      max-width: 328px;
+      margin: 0 auto;
+    }
+.lp .coach-id {
+      flex: none;
+      width: 88px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+.lp .coach-photo { width: 88px; height: 88px; margin: 0 0 8px; }
+.lp .coach-name { margin-bottom: 0; font-size: 15px; text-align: center; }
+.lp .coach-details { flex: 1; }
+.lp .coach-stats { display: block; }
+.lp .coach-stats li { padding: 2px 0; }
+.lp .coach-social { justify-content: flex-start; margin-top: 10px; }
+}
+.lp .value-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    max-width: 960px;
+    margin: 0 auto 8px;
+  }
+.lp .value-grid .value-card { flex: 0 1 calc((100% - 36px) / 3); }
+@media (max-width: 900px) {
+.lp .value-grid .value-card { flex-basis: calc((100% - 18px) / 2); }
+}
+@media (max-width: 560px) {
+.lp .value-grid .value-card { flex-basis: 100%; }
+}
+.lp .value-card {
+    background: var(--bg-card);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 24px;
+  }
+.lp .value-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(61,119,117,0.1);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+.lp .value-name {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+.lp .value-tag {
+    font-family: var(--display);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 4px;
+    margin-bottom: 10px;
+    display: block;
+  }
+.lp .value-desc { font-family: var(--body); font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+.lp .value-total {
+    max-width: 560px;
+    margin: 36px auto 0;
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 26px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+.lp .value-total-label {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+  }
+.lp .value-total-amount {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent-light);
+    letter-spacing: -0.02em;
+  }
+.lp .value-total-strike { text-decoration: line-through; opacity: 0.5; font-weight: 500; font-size: 18px; margin-right: 8px; }
+.lp .buy-section { text-align: center; }
+.lp .buy-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 36px;
+    max-width: 440px;
+    margin: 0 auto;
+    box-shadow: 0 24px 50px rgba(31,45,51,0.08);
+  }
+.lp .price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--hairline);
+  }
+.lp .price { font-family: var(--display); font-size: 44px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+.lp .price-note { font-family: var(--body); font-size: 13.5px; color: var(--ink-muted); }
+.lp .includes { list-style: none; margin-bottom: 26px; text-align: left; }
+.lp .includes li {
+    font-family: var(--body);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    padding: 8px 0;
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--hairline);
+  }
+.lp .includes li:last-child { border-bottom: none; }
+.lp .includes li::before { content: '✓'; color: var(--accent); font-weight: 800; flex-shrink: 0; }
+.lp .buy-card .hero-cta { margin-top: 0; width: 100%; justify-content: center; }
+.lp .buy-footnote { font-family: var(--body); font-size: 13px; color: var(--ink-faint); text-align: center; margin-top: 16px; }
+.lp footer {
+    padding: 40px 24px;
+    text-align: center;
+    border-top: 1px solid var(--hairline);
+  }
+.lp .footer-meta {
+    font-family: var(--display);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    font-weight: 500;
+    line-height: 1.8;
+  }
+.lp ::selection { background: var(--ink); color: var(--white); }
+.lp h1, .lp h2 { text-transform: uppercase; letter-spacing: 0.005em; line-height: 1.04; }
+.lp .hero { padding-top: 36px; }
+.lp h1 { max-width: 760px; font-size: clamp(20px, 7.1vw, 56px); line-height: 1.02; letter-spacing: 0.005em; margin: 12px auto 14px; }
+.lp .hero-sub { font-size: clamp(16px, 2vw, 19px); color: var(--ink); max-width: 560px; margin: 0 auto; white-space: normal; }
+.lp .vsl-wrap { margin-top: 24px; }
+@media (min-width: 920px) {
+.lp .hero-sub { max-width: 620px; }
+}
+@media (min-width: 701px) {
+.lp h1 { font-size: min(42.5px, 5.2vw); }
+}
+.lp .mob-br { display: none; }
+@media (max-width: 600px) {
+.lp .hero { padding-top: 20px; }
+.lp h1 { margin: 8px auto 10px; }
+.lp .vsl-wrap { margin-top: 14px; }
+}
+@media (max-width: 700px) {
+.lp .hero { container-type: inline-size; }
+.lp .mob-br { display: inline; }
+.lp h1 { font-size: calc(100cqw / 13.7); white-space: nowrap; }
+.lp .hero-sub { max-width: none; white-space: nowrap; font-size: calc(100cqw / 28.4); }
+.lp .sub-br { display: none; }
+}
+.lp .hero-cta { text-transform: uppercase; letter-spacing: 0.04em; }
+    .lp { background: #fff; }
   </style>
 <!-- Mouseflow: session recordings + heatmaps -->
 <script type="text/javascript">
@@ -408,123 +1137,286 @@
     </ul>
   </main>
 
-  <!-- ── CHALLENGE DETAILS (same content as the main landing page) ── -->
-  <section class="ln-band alt">
-    <div class="ln-wrap">
-      <div class="ln-label">Real results</div>
-      <h2 class="ln-h2">We are already winning</h2>
-      <p class="ln-sub">Real people getting real results.</p>
-      <div class="ln-proof">
-        <button type="button" class="ln-card" data-story="joe">
-          <img src="../images/proof-joe.png" alt="Screenshot of Joe's follower growth: 11,152 followers, +569.0% vs June 5." loading="lazy">
-          <div class="ln-card-body"><div class="ln-card-name">Joe</div><div class="ln-card-stat">Zero to <strong>11,000+ followers</strong> in 30 days</div><div class="ln-card-more">Read the story &rarr;</div></div>
+  <!-- ── CHALLENGE DETAILS (same sections as the main landing page, from "The real results of commitment" down) ── -->
+  <div class="lp">
+  <!-- ── PROOF ── -->
+  <section class="alt">
+    <div class="container">
+      <h2>The real results of commitment</h2>
+      <p class="section-sub">What our challengers have done with their brands so far.</p>
+      <div class="proof-grid">
+        <button type="button" class="proof-card" data-story="joe">
+          <img src="../images/proof-joe.png" alt="Screenshot of Joe's follower growth: 11,152 followers, +569.0% vs June 5.">
+          <div class="proof-card-body">
+            <div class="proof-card-name">Joe</div>
+            <div class="proof-card-stat">Zero to <strong>11,000+ followers</strong> in 30 days</div>
+            <div class="proof-card-more">Read the story →</div>
+          </div>
         </button>
-        <button type="button" class="ln-card" data-story="hailey">
-          <img src="../images/proof-hailey-card.png" alt="Hailey Ky's Instagram profile, ky.frequency: 14.6K followers." loading="lazy">
-          <div class="ln-card-body"><div class="ln-card-name">Hailey Ky</div><div class="ln-card-stat"><strong>300 to 14K+ followers</strong> in 20 days, plus her first product sales</div><div class="ln-card-more">Read the story &rarr;</div></div>
+        <button type="button" class="proof-card" data-story="hailey">
+          <img src="../images/proof-hailey-card.png" alt="Hailey Ky's Instagram profile, ky.frequency: 14.6K followers.">
+          <div class="proof-card-body">
+            <div class="proof-card-name">Hailey Ky</div>
+            <div class="proof-card-stat"><strong>300 to 14K+ followers</strong>, plus $1,000+ in sales from her first product</div>
+            <div class="proof-card-more">Read the story →</div>
+          </div>
         </button>
-        <button type="button" class="ln-card" data-story="zach">
-          <img src="../images/proof-zach.jpg" alt="Screenshot of Zach B's Instagram Insights showing 62,447 views." loading="lazy">
-          <div class="ln-card-body"><div class="ln-card-name">Zach B</div><div class="ln-card-stat">Day 2: <strong>62K views</strong>, 87 comments</div><div class="ln-card-more">Read the story &rarr;</div></div>
+        <button type="button" class="proof-card" data-story="zach">
+          <img src="../images/proof-zach.jpg" alt="Screenshot of Zach B's Instagram Insights showing 62,447 views.">
+          <div class="proof-card-body">
+            <div class="proof-card-name">Zach B</div>
+            <div class="proof-card-stat">Day 2: <strong>62K views</strong>, 87 comments</div>
+            <div class="proof-card-more">Read the story →</div>
+          </div>
         </button>
-        <button type="button" class="ln-card" data-story="coco">
-          <img src="../images/proof-coco.jpg" alt="Screenshot of Coco's Reel insights showing 169,543 views." loading="lazy">
-          <div class="ln-card-body"><div class="ln-card-name">Coco</div><div class="ln-card-stat">Day 1: <strong>169K views</strong> on a 25-second video</div><div class="ln-card-more">Read the story &rarr;</div></div>
+        <button type="button" class="proof-card" data-story="coco">
+          <img src="../images/proof-coco.jpg" alt="Screenshot of Coco's Reel insights showing 169,543 views.">
+          <div class="proof-card-body">
+            <div class="proof-card-name">Coco</div>
+            <div class="proof-card-stat">Day 1 of her second challenge: <strong>169K views</strong> on a 25-second video</div>
+            <div class="proof-card-more">Read the story →</div>
+          </div>
         </button>
       </div>
     </div>
   </section>
 
-  <section class="ln-band">
-    <div class="ln-wrap">
-      <div class="ln-label">Challenge rules</div>
-      <h2 class="ln-h2">The difference between where you are now and where you want to be is the action you take today.</h2>
-      <p class="ln-sub">Here are the challenge rules:</p>
-      <div class="ln-rules">
-        <div class="ln-rule"><div class="ln-rule-num">01</div><div class="ln-rule-name">You must post 1 video per day</div><div class="ln-rule-desc">Each day you must upload a video. Static posts do not count.</div></div>
-        <div class="ln-rule"><div class="ln-rule-num">02</div><div class="ln-rule-name">1 channel focus</div><div class="ln-rule-desc">You must post daily on a specific channel of your choice.</div></div>
-        <div class="ln-rule"><div class="ln-rule-num">03</div><div class="ln-rule-name">No reposting existing content</div><div class="ln-rule-desc">Every post must be new and original.</div></div>
-      </div>
-      <div style="text-align:center"><a class="ln-cta ln-cta-inline" href="https://join.dailypostchallenge.com/checkout/30-day-posting-challenge">Join the challenge &rarr;</a><p class="ln-foot">Limited to 100 spots per cohort</p></div>
-    </div>
-  </section>
-
-  <section class="ln-band alt">
-    <div class="ln-wrap">
-      <div class="ln-label">Your coaches</div>
-      <h2 class="ln-h2">Meet your coaches</h2>
-      <p class="ln-sub">People who've actually done it, not just talked about it.</p>
-      <div class="ln-coaches">
-        <div class="ln-coach">
-          <img src="../images/coach-matt.jpg" alt="Matt" loading="lazy" width="128" height="128">
-          <div class="ln-coach-name">Matt</div>
-          <a class="ln-coach-handle" href="https://instagram.com/notmattgraham" target="_blank" rel="noopener">@notmattgraham</a>
-          <ul class="ln-coach-stats"><li><strong>1.1M</strong> followers</li><li><strong>1.5B</strong> views</li></ul>
-          <div class="ln-social"><a href="https://instagram.com/notmattgraham" target="_blank" rel="noopener" aria-label="Matt on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@notmattgraham" target="_blank" rel="noopener" aria-label="Matt on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a></div>
+  <!-- ── THE TWO KILLERS ── -->
+  <section class="belong">
+    <div class="container">
+      <h2>Two things kill content dreams</h2>
+      <div class="killer-grid" id="killer-grid">
+        <div class="killer-card">
+          <div class="killer-top"><div class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 12S5.5 4.5 12 4.5 22.5 12 22.5 12 18.5 19.500 12 19.5 1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg></div><div class="killer-name">Fear of judgment</div></div>
+          <p class="killer-pain">You're scared of what people will think. Scared of being bad at it in front of everybody. So the video stays in your drafts.</p>
+          <p class="killer-fix"><strong>In here, nobody judges you.</strong> You post every day next to people who are doing the exact same thing.</p>
         </div>
-        <div class="ln-coach">
-          <img src="../images/coach-justyn.jpg" alt="Justyn" loading="lazy" width="128" height="128">
-          <div class="ln-coach-name">Justyn</div>
-          <a class="ln-coach-handle" href="https://instagram.com/justyn.ai" target="_blank" rel="noopener">@justyn.ai</a>
-          <ul class="ln-coach-stats"><li><strong>250K</strong> followers</li><li><strong>500+</strong> days in a row of posting</li></ul>
-          <div class="ln-social"><a href="https://instagram.com/justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a></div>
-        </div>
-        <div class="ln-coach">
-          <img src="../images/coach-joe.jpg" alt="Joe" loading="lazy" width="128" height="128">
-          <div class="ln-coach-name">Joe</div>
-          <a class="ln-coach-handle" href="https://instagram.com/joejitsu.tech" target="_blank" rel="noopener">@joejitsu.tech</a>
-          <ul class="ln-coach-stats"><li><strong>75K</strong> followers</li><li><strong>0 to 11K</strong> followers in 30 days</li></ul>
-          <div class="ln-social"><a href="https://instagram.com/joejitsu.tech" target="_blank" rel="noopener" aria-label="Joe on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@joezapiain" target="_blank" rel="noopener" aria-label="Joe on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a></div>
+        <div class="killer-card">
+          <div class="killer-top"><div class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.500" width="18" height="17" rx="2.500"/><path d="M8 2.500v4M16 2.500v4M3 10h18"/><path d="M9.700 13.500l4.600 4.600M14.300 13.500l-4.600 4.600" stroke="#f7f8f8" stroke-width="2.100"/></svg></div><div class="killer-name">No consistency</div></div>
+          <p class="killer-pain">You post for a week, then you quit. Nobody notices when you stop, so it's easy to stop.</p>
+          <p class="killer-fix"><strong>In here, people notice.</strong> You have $100 on the line and a group that expects your post every day.</p>
         </div>
       </div>
+      <p class="killer-close">The challenge is built to beat both.</p>
     </div>
   </section>
 
-  <section class="ln-band">
-    <div class="ln-wrap">
-      <div class="ln-label">What you get</div>
-      <h2 class="ln-h2">We help you win</h2>
-      <p class="ln-sub">We give you all the resources you need to win your 30-day challenge.</p>
-      <div class="ln-values">
-        <div class="ln-value"><div class="ln-value-num">01</div><div class="ln-value-name">Weekly Content Call</div><div class="ln-value-tag">($999 value)</div><div class="ln-value-desc">Interactive workshop with unlimited Q&amp;A. I'll keep answering until there are none left!</div></div>
-        <div class="ln-value"><div class="ln-value-num">02</div><div class="ln-value-name">AI Content Hub</div><div class="ln-value-tag">($199 value)</div><div class="ln-value-desc">A fill-in-the-blanks project that becomes your content command center inside ChatGPT.</div></div>
-        <div class="ln-value"><div class="ln-value-num">03</div><div class="ln-value-name">Pull / Drag Audit Custom GPT</div><div class="ln-value-tag">($99 value)</div><div class="ln-value-desc">Diagnose exactly why you haven't been able to stick with creating content every time you've tried.</div></div>
-        <div class="ln-value"><div class="ln-value-num">04</div><div class="ln-value-name">Setlist Creator</div><div class="ln-value-tag">($99 value)</div><div class="ln-value-desc">A template for selecting your core content pillars to create repeatable, winning content.</div></div>
-        <div class="ln-value"><div class="ln-value-num">05</div><div class="ln-value-name">30-in-30 Tracker Template</div><div class="ln-value-tag">($99 value)</div><div class="ln-value-desc">Most leadership programs leave you on your own. We don't. Get ongoing coaching, an engaged community, weekly mastermind calls, and real-time support exactly when you need it most.</div></div>
-        <div class="ln-value"><div class="ln-value-num">06</div><div class="ln-value-name">Content Reposting Automations</div><div class="ln-value-tag">($399 value)</div><div class="ln-value-desc">Automatically repost your content to the other major platforms.</div></div>
+  <!-- ── HOW IT WORKS ── -->
+  <section>
+    <div class="container">
+      <h2 style="margin-bottom: 36px;">How it works</h2>
+      <div class="flow" id="flow" aria-label="You put in $100, post every day for 30 days, and get $110 back.">
+        <div class="flow-step flow-in">
+          <div class="flow-tag">In</div>
+          <div class="flow-amount">$100</div>
+          <div class="flow-cap">You put in $100</div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step flow-mid">
+          <div class="flow-tag"><span id="flow-day">Day 30</span> of 30</div>
+          <div class="flow-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="flow-cap">You post every day, 30 days straight</div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-step flow-out">
+          <div class="flow-tag">Out</div>
+          <div class="flow-amount">$<span id="flow-out">110</span></div>
+          <div class="flow-cap">We pay you back $110</div>
+        </div>
       </div>
-      <div class="ln-total"><span class="ln-total-label">Total bonus value</span><span class="ln-total-amount"><s>$1,894</s>included free</span></div>
+      <div class="rules-cta">
+        <a href="https://join.dailypostchallenge.com/checkout/30-day-posting-challenge" class="hero-cta">Commit To My Goals <span class="arrow">&rarr;</span></a>
+        <span class="hero-micro">Fall Challenge closes November 30th</span>
+      </div>
     </div>
   </section>
 
-  <section class="ln-band alt">
-    <div class="ln-wrap">
-      <h2 class="ln-h2">Ready to commit?</h2>
-      <p class="ln-sub">Only 100 spots per cohort. A new cohort forms <strong>every day</strong>, so join today's.</p>
-      <div class="ln-buy">
-        <div class="ln-price"><b>$100</b><span>entry &middot; 110% back on completion</span></div>
-        <ul class="ln-includes">
-          <li>30-day posting challenge, starts today</li>
-          <li>Weekly Content Call ($999 value)</li>
-          <li>AI Content Hub ($199 value)</li>
-          <li>Pull / Drag Audit Custom GPT ($99 value)</li>
-          <li>Setlist Creator ($99 value)</li>
-          <li>30-in-30 Tracker Template ($99 value)</li>
-          <li>Content Reposting Automations ($399 value)</li>
+  <!-- ── COACHES ── -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-label">Your Coaches</div>
+      <h2>Meet your coaches</h2>
+      <p class="section-sub">People who've actually done it, not just talked about it.</p>
+      <div class="coach-grid">
+        <div class="coach-card">
+          <div class="coach-id">
+            <img class="coach-photo" src="../images/coach-matt.jpg" alt="Matt">
+            <div class="coach-name">Matt</div>
+          </div>
+          <div class="coach-details">
+            <a class="coach-handle" href="https://instagram.com/notmattgraham" target="_blank" rel="noopener">@notmattgraham</a>
+            <ul class="coach-stats">
+              <li><strong>1.1M</strong> followers</li>
+              <li><strong>1.5B</strong> views</li>
+            </ul>
+            <div class="coach-social">
+              <a class="coach-social-link" href="https://instagram.com/notmattgraham" target="_blank" rel="noopener" aria-label="Matt on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a class="coach-social-link" href="https://tiktok.com/@notmattgraham" target="_blank" rel="noopener" aria-label="Matt on TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="coach-card">
+          <div class="coach-id">
+            <img class="coach-photo" src="../images/coach-justyn.jpg" alt="Justyn">
+            <div class="coach-name">Justyn</div>
+          </div>
+          <div class="coach-details">
+            <a class="coach-handle" href="https://instagram.com/justyn.ai" target="_blank" rel="noopener">@justyn.ai</a>
+            <ul class="coach-stats">
+              <li><strong>250K</strong> followers</li>
+              <li><strong>500+</strong> days in a row of posting</li>
+            </ul>
+            <div class="coach-social">
+              <a class="coach-social-link" href="https://instagram.com/justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a class="coach-social-link" href="https://tiktok.com/@justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="coach-card">
+          <div class="coach-id">
+            <img class="coach-photo" src="../images/coach-joe.jpg" alt="Joe">
+            <div class="coach-name">Joe</div>
+          </div>
+          <div class="coach-details">
+            <a class="coach-handle" href="https://instagram.com/joejitsu.tech" target="_blank" rel="noopener">@joejitsu.tech</a>
+            <ul class="coach-stats">
+              <li><strong>75K</strong> followers</li>
+              <li><strong>0 to 11K</strong> followers in 30 days</li>
+            </ul>
+            <div class="coach-social">
+              <a class="coach-social-link" href="https://instagram.com/joejitsu.tech" target="_blank" rel="noopener" aria-label="Joe on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a class="coach-social-link" href="https://tiktok.com/@joezapiain" target="_blank" rel="noopener" aria-label="Joe on TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALUE STACK ── -->
+  <section>
+    <div class="container">
+      <div class="section-label">What You Get</div>
+      <h2>We Help You Win!</h2>
+      <p class="section-sub">We give you all the resources you need to win your 30-day challenge.</p>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon">01</div>
+          <div class="value-name">The $100 Bet: 110% Back When You Finish</div>
+          <div class="value-desc">You've told yourself you'd be consistent before, and fallen off by week two. Put skin in the game. Post every day for 30 days and we pay you back $110.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">02</div>
+          <div class="value-name">A Community That Wants To See You Win</div>
+          <div class="value-desc">The people in your life don't get why you want this. In here, everyone does. You post every day next to people who want what you want, who cheer your wins, and who never judge you for trying.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">03</div>
+          <div class="value-name">Weekly Accountability Call</div>
+          <span class="value-tag">($999 value)</span>
+          <div class="value-desc">Nobody's checking on you, so it's easy to skip a day. Every week you check in, and we answer every question until there are none left.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">04</div>
+          <div class="value-name">30-Day Roadmap</div>
+          <div class="value-desc">A day-by-day posting guide: 30 posts for 30 days. We give you the content templates. Your only job is to fill in the blanks and post.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">05</div>
+          <div class="value-name">30-Day Post Tracker</div>
+          <span class="value-tag">($99 value)</span>
+          <div class="value-desc">It tracks every post to make sure you're posting. Miss a day, and it notifies the coaches so somebody comes to check on you.</div>
+        </div>
+      </div>
+      <div class="value-total">
+        <span class="value-total-label">Total bonus value</span>
+        <span class="value-total-amount"><span class="value-total-strike">$1,098</span>included free</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RULES ── -->
+  <section class="rules-dark">
+    <div class="container">
+      <h2 style="margin-bottom: 44px;">The challenge rules</h2>
+      <div class="rules-grid" id="rules-grid">
+        <div class="rule-card">
+          <div class="rule-top">
+            <div class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="5" width="14.5" height="14" rx="2.5"/><polygon points="22.5 7.5 16 12 22.5 16.5 22.5 7.5"/><path class="ico-fill" d="M7 9.4v5.2l4.4-2.6z"/></svg></div>
+            <div class="rule-num">Rule 01</div>
+          </div>
+          <div class="rule-name">You must post 1 video per day</div>
+          <div class="rule-desc">Each day you must upload a video. Static posts do not count.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-top">
+            <div class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.6"/><circle class="ico-fill ico-pulse" cx="12" cy="12" r="1.9"/></svg></div>
+            <div class="rule-num">Rule 02</div>
+          </div>
+          <div class="rule-name">1 channel focus</div>
+          <div class="rule-desc">You must post daily on a specific channel of your choice.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-top">
+            <div class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="ico-spin"><path d="M17 2l4 4-4 4"/><path d="M3 11V9.5A3.5 3.5 0 0 1 6.5 6H21"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1.5a3.5 3.5 0 0 1-3.5 3.5H3"/></g><path class="ico-slash" pathLength="1" d="M4 3.5l16 17"/></svg></div>
+            <div class="rule-num">Rule 03</div>
+          </div>
+          <div class="rule-name">No reposting existing content</div>
+          <div class="rule-desc">Every post must be new and original.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BUY ── -->
+  <section class="alt buy-section">
+    <div class="container">
+      <h2>Ready to commit?</h2>
+      <p class="lead" style="margin-bottom: 36px;">The Fall Challenge closes <strong>November 30th</strong>, and the 110% money-back guarantee goes away with it.</p>
+      <div class="buy-card">
+        <div class="price-row">
+          <span class="price">$100</span>
+          <span class="price-note">entry · 110% back on completion</span>
+        </div>
+        <ul class="includes">
+          <li>30-Day Posting Challenge, starts today</li>
+          <li>A Community That Wants To See You Win</li>
+          <li>Weekly Accountability Call ($999 value)</li>
+          <li>30-Day Roadmap</li>
+          <li>30-Day Post Tracker ($99 value)</li>
         </ul>
-        <a class="ln-cta" href="https://join.dailypostchallenge.com/checkout/30-day-posting-challenge">Join the challenge &rarr;</a>
-        <p class="ln-foot">Limited to 100 spots per challenge.</p>
+        <a href="https://join.dailypostchallenge.com/checkout/30-day-posting-challenge" class="hero-cta">Commit To My Goals <span class="arrow">&rarr;</span></a>
+        <div class="buy-footnote">Fall Challenge closes November 30th.</div>
       </div>
     </div>
   </section>
-
-  <div class="ln-modal" id="ln-modal">
-    <div class="ln-modal-bg" data-close></div>
-    <div class="ln-modal-panel" role="dialog" aria-modal="true" aria-labelledby="ln-modal-name">
-      <button type="button" class="ln-modal-close" data-close aria-label="Close">&times;</button>
-      <div class="ln-modal-media"><div class="ln-modal-imgs" id="ln-modal-imgs"></div><button type="button" class="ln-modal-next" id="ln-modal-next" aria-label="Next photo">&rarr;</button></div>
-      <div class="ln-modal-body"><div class="ln-modal-name" id="ln-modal-name"></div><div class="ln-modal-role" id="ln-modal-role"></div><p class="ln-modal-text" id="ln-modal-text"></p></div>
+<div class="story-modal" id="story-modal">
+  <div class="story-modal-backdrop" data-close></div>
+  <div class="story-modal-panel" role="dialog" aria-modal="true" aria-labelledby="story-modal-name">
+    <button type="button" class="story-modal-close" data-close aria-label="Close">&times;</button>
+    <div class="story-modal-media">
+      <div class="story-modal-images" id="story-modal-images"></div>
+      <button type="button" class="story-modal-next" id="story-modal-next" aria-label="Next photo">&rarr;</button>
     </div>
+    <div class="story-modal-body">
+      <div class="story-modal-name" id="story-modal-name"></div>
+      <div class="story-modal-role" id="story-modal-role"></div>
+      <p class="story-modal-text" id="story-modal-text"></p>
+    </div>
+  </div>
+</div>
   </div>
 
   <footer>&copy; 2026 Creator Launchpad</footer>
@@ -592,43 +1484,179 @@
   })();
 </script>
 <script>
-  // Testimonial story popups (same stories as the main landing page).
+  /* Two killers: the two cards fade and slide into place once, when the section scrolls into view */
   (function () {
-    // Resolve image paths now: on the landing page the address bar moves to
-    // thank-you/ after signup, which would break relative paths.
-    var IMG = new URL('../images/', location.href).href;
-    document.querySelectorAll('.ln-band img').forEach(function (im) { im.src = im.src; });
-    var stories = {
-      joe: { name: 'Joe', role: 'Cohort graduate · full 30-day challenge', images: ['proof-joe.png', 'proof-joe-2.png'],
-        text: "Joe started the challenge with zero real momentum. Thirty days of daily posting later, he'd grown to 11,152 followers (up 569%) and racked up 10,528,900 views on his content. 99.4% of those views came from people who didn't already follow him: proof the work was landing in front of brand-new eyes, every single day." },
-      hailey: { name: 'Hailey Ky', role: 'Nomadic Entrepreneur · Cohort 1', images: ['proof-hailey-profile.png', 'proof-hailey-239k.png', 'proof-hailey.jpg'],
-        text: "Hailey started with about 300 followers on Instagram and videos that averaged 300 to 500 views. Early in the challenge, one of her videos hit 50,000 views, her most popular at the time. Her very next video, posted on day 4, passed 100,000 views and has since climbed to 239,000. In about 20 days she crossed 14,000 followers, launched her first product, and has already made multiple sales. She's officially monetized her brand." },
-      zach: { name: 'Zach B', role: 'I build things · Cohort 2', images: ['proof-zach.jpg'],
-        text: 'Zach told a friend he "sucked at social" and there was no way any of this would work. Two days into the challenge, a single post had pulled 62,447 views, 1,550 viewers, 695 likes, and 87 comments.' },
-      coco: { name: 'Coco', role: 'Intentional Remote Work · Cohort 1', images: ['proof-coco.jpg'],
-        text: "Coco's very first post, a 25-second video on day 1, pulled 169,543 views (157,986 of them on Facebook alone), 2K likes, and 366 total interactions before day 2 even started." }
-    };
-    var modal = document.getElementById('ln-modal');
-    var imgs = document.getElementById('ln-modal-imgs');
-    var next = document.getElementById('ln-modal-next');
-    var count = 1, last = null;
-    function updateNext() { next.hidden = count <= 1 || Math.round(imgs.scrollLeft / imgs.clientWidth) >= count - 1; }
-    imgs.addEventListener('scroll', updateNext);
-    next.addEventListener('click', function () { imgs.scrollLeft = (Math.round(imgs.scrollLeft / imgs.clientWidth) + 1) * imgs.clientWidth; });
-    function open(key) {
-      var s = stories[key]; if (!s) return;
-      imgs.innerHTML = '';
-      s.images.forEach(function (f) { var im = document.createElement('img'); im.src = IMG + f; im.alt = s.name + ' proof screenshot'; imgs.appendChild(im); });
-      count = s.images.length; imgs.scrollLeft = 0; updateNext();
-      document.getElementById('ln-modal-name').textContent = s.name;
-      document.getElementById('ln-modal-role').textContent = s.role;
-      document.getElementById('ln-modal-text').textContent = s.text;
-      last = document.activeElement; modal.classList.add('open'); modal.querySelector('.ln-modal-close').focus();
+    var grid = document.getElementById('killer-grid');
+    if (!grid || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    grid.classList.add('anim');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { grid.classList.add('in'); io.disconnect(); } });
+    }, { threshold: 0.25 });
+    io.observe(grid);
+  })();
+
+  /* Challenge rules: cards rise in and their icons draw, each time the section scrolls into view */
+  (function () {
+    var grid = document.getElementById('rules-grid');
+    if (!grid || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cards = grid.querySelectorAll('.rule-card');
+    var timers = [];
+    function reset() {
+      timers.forEach(clearTimeout); timers = [];
+      grid.classList.add('anim');
+      cards.forEach(function (c) { c.classList.remove('show', 'drawn'); });
     }
-    function close() { modal.classList.remove('open'); if (last) last.focus(); }
-    document.querySelectorAll('[data-story]').forEach(function (c) { c.addEventListener('click', function () { open(c.getAttribute('data-story')); }); });
-    modal.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', close); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+    function play() {
+      reset();
+      timers.push(setTimeout(function () { cards.forEach(function (c) { c.classList.add('show'); }); }, 60));
+      cards.forEach(function (c, i) { timers.push(setTimeout(function () { c.classList.add('drawn'); }, 450 + i * 250)); });
+    }
+    reset();
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) play(); else reset(); });
+    }, { threshold: 0.3 }).observe(grid);
+  })();
+
+  /* How-it-works graphic: plays once each time it scrolls into view */
+  (function () {
+    var flow = document.getElementById('flow');
+    if (!flow || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var steps = flow.querySelectorAll('.flow-step, .flow-arrow');
+    var dots = flow.querySelectorAll('.flow-dots span');
+    var day = document.getElementById('flow-day');
+    var out = document.getElementById('flow-out');
+    var outCard = flow.querySelector('.flow-out');
+    var timers = [];
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+    function reset() {
+      timers.forEach(clearTimeout); timers = [];
+      flow.classList.add('anim');
+      steps.forEach(function (el) { el.classList.remove('show'); });
+      dots.forEach(function (d) { d.classList.remove('on', 'settled'); });
+      outCard.classList.remove('paid');
+      day.textContent = 'Day 0'; out.textContent = '100';
+    }
+    function play() {
+      reset();
+      at(150, function () { steps[0].classList.add('show'); });
+      at(650, function () { steps[1].classList.add('show'); });
+      at(900, function () { steps[2].classList.add('show'); });
+      dots.forEach(function (d, i) {
+        at(1300 + i * 75, function () { d.classList.add('on'); day.textContent = 'Day ' + (i + 1); });
+        at(1300 + i * 75 + 220, function () { d.classList.add('settled'); });
+      });
+      var end = 1300 + dots.length * 75 + 250;
+      at(end, function () { steps[3].classList.add('show'); });
+      at(end + 300, function () { steps[4].classList.add('show'); });
+      for (var n = 1; n <= 10; n++) (function (n) { at(end + 800 + n * 60, function () { out.textContent = String(100 + n); }); })(n);
+      at(end + 800 + 10 * 60 + 60, function () { outCard.classList.add('paid'); });
+    }
+    reset();
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) play(); else reset(); });
+    }, { threshold: 0.45 }).observe(flow);
+  })();
+</script>
+<script>
+  (function () {
+    var stories = {
+      joe: {
+        name: 'Joe',
+        role: 'Completed the full 30-day challenge',
+        images: ['images/proof-joe.png', 'images/proof-joe-2.png'],
+        text: "Joe started the challenge with zero real momentum. Thirty days of daily posting later, he'd grown to 11,152 followers (up 569%) and racked up 10,528,900 views on his content. 99.4% of those views came from people who didn't already follow him: proof the work was landing in front of brand-new eyes, every single day."
+      },
+      hailey: {
+        name: 'Hailey Ky',
+        role: 'Nomadic Entrepreneur',
+        images: ['images/proof-hailey-profile.png', 'images/proof-hailey-239k.png', 'images/proof-hailey.jpg'],
+        text: "Hailey started with about 300 followers on Instagram and videos that averaged 300 to 500 views. She finished her first challenge, then signed up for a second. Four days into that second challenge, her video passed 100,000 views and has since climbed to 239,000. She went from about 300 to over 14,000 followers and launched her first product, with over $1,000 in sales."
+      },
+      zach: {
+        name: 'Zach B',
+        role: 'I build things',
+        images: ['images/proof-zach.jpg'],
+        text: 'Zach told a friend he "sucked at social" and there was no way any of this would work. Two days into the challenge, a single post had pulled 62,447 views, 1,550 viewers, 695 likes, and 87 comments.'
+      },
+      coco: {
+        name: 'Coco',
+        role: 'Intentional Remote Work',
+        images: ['images/proof-coco.jpg'],
+        text: "On day 1 of her second challenge, Coco posted a 25-second video that pulled 169,543 views (157,986 of them on Facebook alone), 2K likes, and 366 total interactions before day 2 even started."
+      }
+    };
+
+    // Pin image addresses now: after signup the address bar can move to
+    // thank-you/, which would break relative paths.
+    var BASE = location.href;
+    document.querySelectorAll('.lp img').forEach(function (im) { im.src = im.src; });
+    Object.keys(stories).forEach(function (k) {
+      stories[k].images = stories[k].images.map(function (f) { return new URL('../' + f, BASE).href; });
+    });
+
+    var modal = document.getElementById('story-modal');
+    var imagesEl = document.getElementById('story-modal-images');
+    var nextBtn = document.getElementById('story-modal-next');
+    var nameEl = document.getElementById('story-modal-name');
+    var roleEl = document.getElementById('story-modal-role');
+    var textEl = document.getElementById('story-modal-text');
+    var lastFocused = null;
+    var imageCount = 1;
+
+    // A dot indicator is invisible against the white screenshots most of
+    // these stories use, so a solid dark "next" arrow replaces it. It stays
+    // legible regardless of what's behind it, and hides once there's nothing
+    // left to advance to.
+    function updateNextButton() {
+      var index = Math.round(imagesEl.scrollLeft / imagesEl.clientWidth);
+      nextBtn.hidden = imageCount <= 1 || index >= imageCount - 1;
+    }
+
+    imagesEl.addEventListener('scroll', updateNextButton);
+
+    nextBtn.addEventListener('click', function () {
+      var index = Math.round(imagesEl.scrollLeft / imagesEl.clientWidth);
+      imagesEl.scrollLeft = (index + 1) * imagesEl.clientWidth;
+    });
+
+    function openStory(key) {
+      var s = stories[key];
+      if (!s) return;
+      imagesEl.innerHTML = '';
+      s.images.forEach(function (src) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = s.name + ' proof screenshot';
+        imagesEl.appendChild(img);
+      });
+      imageCount = s.images.length;
+      imagesEl.scrollLeft = 0;
+      updateNextButton();
+      nameEl.textContent = s.name;
+      roleEl.textContent = s.role;
+      textEl.textContent = s.text;
+      lastFocused = document.activeElement;
+      modal.classList.add('open');
+      modal.querySelector('.story-modal-close').focus();
+    }
+
+    function closeStory() {
+      modal.classList.remove('open');
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('[data-story]').forEach(function (card) {
+      card.addEventListener('click', function () { openStory(card.getAttribute('data-story')); });
+    });
+    modal.querySelectorAll('[data-close]').forEach(function (el) {
+      el.addEventListener('click', closeStory);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeStory();
+    });
   })();
 </script>
 </body>
