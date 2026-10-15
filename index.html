@@ -649,35 +649,30 @@
     margin: 0 auto 44px;
   }
 .lp .value-name + .value-desc { margin-top: 10px; }
-.lp .flow { display: flex; align-items: stretch; justify-content: center; gap: 14px; max-width: 900px; margin: 0 auto; }
-.lp .flow-step { flex: 1 1 0; background: var(--bg-card); border: 1px solid var(--hairline); border-radius: 16px; padding: 22px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity .45s ease, transform .45s ease, background .5s ease, border-color .5s ease, box-shadow .5s ease; }
-.lp .flow-mid { flex: 1.5 1 0; }
-.lp .flow-tag { font-family: var(--display); font-size: 12.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-.lp .flow-amount { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 5vw, 56px); line-height: 1; color: var(--ink); transition: color .5s ease; }
-.lp .flow-cap { font-family: var(--body); font-size: 15px; color: var(--ink-muted); margin-top: 10px; transition: color .5s ease; }
-.lp .flow-dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; width: 100%; max-width: 260px; }
-.lp .flow-dots span { aspect-ratio: 1; border-radius: 50%; background: var(--accent); transition: background .25s ease, transform .25s ease; }
-.lp .flow-arrow { align-self: center; font-family: var(--display); font-weight: 800; font-size: 30px; color: var(--accent); transition: opacity .35s ease, transform .35s ease; }
+/* ── HOW IT WORKS: guidance + accountability + community = you post every day ── */
+.lp .flow { display: flex; align-items: stretch; justify-content: center; gap: 12px; max-width: 1040px; margin: 0 auto; }
+.lp .flow-step { flex: 1 1 0; background: var(--bg-card); border: 1px solid var(--hairline); border-radius: 16px; padding: 24px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; transition: opacity .45s ease, transform .45s ease, background .5s ease, border-color .5s ease, box-shadow .5s ease; }
+.lp .flow-ico { width: 52px; height: 52px; border-radius: 14px; background: rgba(61,119,117,0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: background .5s ease, color .5s ease; }
+.lp .flow-ico svg { width: 28px; height: 28px; }
+.lp .flow-ico .ico-fill { fill: currentColor; stroke: none; }
+.lp .flow-name { font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1.15; color: var(--ink); transition: color .5s ease; }
+.lp .flow-cap { font-family: var(--body); font-size: 14.5px; line-height: 1.5; color: var(--ink-muted); margin-top: 8px; transition: color .5s ease; }
+.lp .flow-arrow { align-self: center; font-family: var(--display); font-weight: 800; font-size: 32px; line-height: 1; color: var(--accent); transition: opacity .35s ease, transform .35s ease; }
 .lp .flow-out { background: var(--accent); border-color: var(--accent); box-shadow: 0 14px 30px rgba(61,119,117,0.28); }
-.lp .flow-out .flow-tag { color: #cfe8e6; }
-.lp .flow-out .flow-amount, .lp .flow-out .flow-cap { color: #fff; }
+.lp .flow-out .flow-ico { background: rgba(255,255,255,0.16); color: #fff; }
+.lp .flow-out .flow-name, .lp .flow-out .flow-cap { color: #fff; }
+/* Animation: cards appear in turn, then the result lights up */
 .lp .flow.anim .flow-step, .lp .flow.anim .flow-arrow { opacity: 0; transform: translateY(10px); }
 .lp .flow.anim .flow-step.show, .lp .flow.anim .flow-arrow.show { opacity: 1; transform: none; }
-.lp .flow.anim .flow-dots span { background: var(--hairline); }
-.lp .flow.anim .flow-dots span.on { background: var(--accent); transform: scale(1.15); }
-.lp .flow.anim .flow-dots span.on.settled { transform: none; }
 .lp .flow.anim .flow-out:not(.paid) { background: var(--bg-card); border-color: var(--hairline); box-shadow: none; }
-.lp .flow.anim .flow-out:not(.paid) .flow-tag { color: var(--accent); }
-.lp .flow.anim .flow-out:not(.paid) .flow-amount { color: var(--ink); }
+.lp .flow.anim .flow-out:not(.paid) .flow-ico { background: rgba(61,119,117,0.1); color: var(--accent); }
+.lp .flow.anim .flow-out:not(.paid) .flow-name { color: var(--ink); }
 .lp .flow.anim .flow-out:not(.paid) .flow-cap { color: var(--ink-muted); }
 .lp .flow-out.paid { animation: flow-pop .5s ease; }
-@keyframes flow-pop { 0% { transform: scale(1); } 45% { transform: scale(1.07); } 100% { transform: scale(1); } }
-@media (max-width: 700px) {
+@keyframes flow-pop { 0% { transform: scale(1); } 45% { transform: scale(1.04); } 100% { transform: scale(1); } }
+@media (max-width: 760px) {
 .lp .flow { flex-direction: column; align-items: center; gap: 8px; }
-.lp .flow-step { width: 100%; max-width: 340px; flex: none; padding: 18px; }
-.lp .flow-arrow { transform: rotate(90deg); }
-.lp .flow.anim .flow-arrow { transform: rotate(90deg); }
-.lp .flow.anim .flow-arrow.show { transform: rotate(90deg); }
+.lp .flow-step { width: 100%; max-width: 340px; flex: none; padding: 20px 18px; }
 }
 .lp .rules-title { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.005em; font-size: clamp(20px, 2.6vw, 26px); color: var(--ink); text-align: center; margin: 0 0 24px; }
 .lp section.belong { background: var(--ink); border-top: none; text-align: center; }
@@ -1045,10 +1040,10 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 18px;
-    max-width: 960px;
+    max-width: 780px;
     margin: 0 auto 8px;
   }
-.lp .value-grid .value-card { flex: 0 1 calc((100% - 36px) / 3); }
+.lp .value-grid .value-card { flex: 0 1 calc((100% - 18px) / 2); }  /* 2 x 2 for four offers */
 @media (max-width: 900px) {
 .lp .value-grid .value-card { flex-basis: calc((100% - 18px) / 2); }
 }
@@ -1301,7 +1296,7 @@
     <a class="ty-resend" href="10K%20Follower%20Playbook.pdf" download="10K Follower Playbook.pdf">Didn't receive it?</a>
 
     <div class="ty-video">
-      <video id="ty-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCTENXUVF3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ebb4e6508de8664af66c18c9dc082b6f5f53d4b7/Challenge_VSL_2.0.mp4" playsinline preload="none"></video>
+      <video id="ty-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCRnRpWHd3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--a839f250178b1991d950d4a2dbfea9180925ee07/ChallengeVSL_2.1.mp4" playsinline preload="none"></video>
       <button type="button" class="ty-sound" id="ty-sound" hidden>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
         <span id="ty-sound-label">Tap for sound</span>
@@ -1313,7 +1308,7 @@
     <ul class="ty-how">
       <li>One post every day</li>
       <li>For 30 days</li>
-      <li>Get 110% of your money back</li>
+      <li>With coaches and a community behind you</li>
     </ul>
   </section>
 
@@ -1374,7 +1369,7 @@
         <div class="killer-card">
           <div class="killer-top"><div class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.500" width="18" height="17" rx="2.500"/><path d="M8 2.500v4M16 2.500v4M3 10h18"/><path d="M9.700 13.500l4.600 4.600M14.300 13.500l-4.600 4.600" stroke="#f7f8f8" stroke-width="2.100"/></svg></div><div class="killer-name">No consistency</div></div>
           <p class="killer-pain">You post for a week, then you quit. Nobody notices when you stop, so it's easy to stop.</p>
-          <p class="killer-fix"><strong>In here, people notice.</strong> You have $100 on the line and a group that expects your post every day.</p>
+          <p class="killer-fix"><strong>In here, people notice.</strong> You've put $99 into your goals and joined a group that expects your post every day.</p>
         </div>
       </div>
       <p class="killer-close">The challenge is built to beat both.</p>
@@ -1385,23 +1380,29 @@
   <section>
     <div class="container">
       <h2 style="margin-bottom: 36px;">How it works</h2>
-      <div class="flow" id="flow" aria-label="You put in $100, post every day for 30 days, and get $110 back.">
-        <div class="flow-step flow-in">
-          <div class="flow-tag">In</div>
-          <div class="flow-amount">$100</div>
-          <div class="flow-cap">You put in $100</div>
+      <div class="flow" id="flow" aria-label="Guidance, accountability, and community add up to posting every day for 30 days.">
+        <div class="flow-step">
+          <div class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon class="ico-fill" points="16.2 7.8 13.9 13.9 7.8 16.2 10.1 10.1 16.2 7.8"/></svg></div>
+          <div class="flow-name">Guidance</div>
+          <div class="flow-cap">A day-by-day roadmap and templates, so you always know what to post.</div>
         </div>
-        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
-        <div class="flow-step flow-mid">
-          <div class="flow-tag"><span id="flow-day">Day 30</span> of 30</div>
-          <div class="flow-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="flow-cap">You post every day, 30 days straight</div>
+        <div class="flow-arrow" aria-hidden="true">+</div>
+        <div class="flow-step">
+          <div class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="M8.5 15l2.3 2.3 4.7-4.7"/></svg></div>
+          <div class="flow-name">Accountability</div>
+          <div class="flow-cap">A post tracker and a weekly call. Miss a day and a coach checks on you.</div>
         </div>
-        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="flow-arrow" aria-hidden="true">+</div>
+        <div class="flow-step">
+          <div class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/><circle cx="17.2" cy="9.2" r="2.6"/><path d="M16.4 13.9c2.9.2 5.1 2.4 5.1 5.4"/></svg></div>
+          <div class="flow-name">Community</div>
+          <div class="flow-cap">People posting right next to you who cheer you on and never judge.</div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">=</div>
         <div class="flow-step flow-out">
-          <div class="flow-tag">Out</div>
-          <div class="flow-amount">$<span id="flow-out">110</span></div>
-          <div class="flow-cap">We pay you back $110</div>
+          <div class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2.5"/><polygon points="22 7.5 17 12 22 16.5 22 7.5"/><path d="M6 12.2l2.2 2.2 4.4-4.4"/></svg></div>
+          <div class="flow-name">You post every day</div>
+          <div class="flow-cap">For 30 days straight. No more quitting.</div>
         </div>
       </div>
       <div class="rules-cta">
@@ -1494,27 +1495,22 @@
       <div class="value-grid">
         <div class="value-card">
           <div class="value-icon">01</div>
-          <div class="value-name">The $100 Bet: 110% Back When You Finish</div>
-          <div class="value-desc">You've told yourself you'd be consistent before, and fallen off by week two. Put skin in the game. Post every day for 30 days and we pay you back $110.</div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">02</div>
           <div class="value-name">A Community That Wants To See You Win</div>
           <div class="value-desc">The people in your life don't get why you want this. In here, everyone does. You post every day next to people who want what you want, who cheer your wins, and who never judge you for trying.</div>
         </div>
         <div class="value-card">
-          <div class="value-icon">03</div>
+          <div class="value-icon">02</div>
           <div class="value-name">Weekly Accountability Call</div>
           <span class="value-tag">($999 value)</span>
           <div class="value-desc">Nobody's checking on you, so it's easy to skip a day. Every week you check in, and we answer every question until there are none left.</div>
         </div>
         <div class="value-card">
-          <div class="value-icon">04</div>
+          <div class="value-icon">03</div>
           <div class="value-name">30-Day Roadmap</div>
           <div class="value-desc">A day-by-day posting guide: 30 posts for 30 days. We give you the content templates. Your only job is to fill in the blanks and post.</div>
         </div>
         <div class="value-card">
-          <div class="value-icon">05</div>
+          <div class="value-icon">04</div>
           <div class="value-name">30-Day Post Tracker</div>
           <span class="value-tag">($99 value)</span>
           <div class="value-desc">It tracks every post to make sure you're posting. Miss a day, and it notifies the coaches so somebody comes to check on you.</div>
@@ -1564,11 +1560,11 @@
   <section class="alt buy-section">
     <div class="container">
       <h2>Ready to commit?</h2>
-      <p class="lead" style="margin-bottom: 36px;">The Fall Challenge closes <strong>November 30th</strong>, and the 110% money-back guarantee goes away with it.</p>
+      <p class="lead" style="margin-bottom: 36px;">The Fall Challenge closes <strong>November 30th</strong>.</p>
       <div class="buy-card">
         <div class="price-row">
-          <span class="price">$100</span>
-          <span class="price-note">entry · 110% back on completion</span>
+          <span class="price">$99</span>
+          <span class="price-note">one-time entry</span>
         </div>
         <ul class="includes">
           <li>30-Day Posting Challenge, starts today</li>
@@ -1798,9 +1794,6 @@
     if (!flow || !('IntersectionObserver' in window)) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var steps = flow.querySelectorAll('.flow-step, .flow-arrow');
-    var dots = flow.querySelectorAll('.flow-dots span');
-    var day = document.getElementById('flow-day');
-    var out = document.getElementById('flow-out');
     var outCard = flow.querySelector('.flow-out');
     var timers = [];
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
@@ -1808,24 +1801,12 @@
       timers.forEach(clearTimeout); timers = [];
       flow.classList.add('anim');
       steps.forEach(function (el) { el.classList.remove('show'); });
-      dots.forEach(function (d) { d.classList.remove('on', 'settled'); });
       outCard.classList.remove('paid');
-      day.textContent = 'Day 0'; out.textContent = '100';
     }
     function play() {
       reset();
-      at(150, function () { steps[0].classList.add('show'); });
-      at(650, function () { steps[1].classList.add('show'); });
-      at(900, function () { steps[2].classList.add('show'); });
-      dots.forEach(function (d, i) {
-        at(1300 + i * 75, function () { d.classList.add('on'); day.textContent = 'Day ' + (i + 1); });
-        at(1300 + i * 75 + 220, function () { d.classList.add('settled'); });
-      });
-      var end = 1300 + dots.length * 75 + 250;
-      at(end, function () { steps[3].classList.add('show'); });
-      at(end + 300, function () { steps[4].classList.add('show'); });
-      for (var n = 1; n <= 10; n++) (function (n) { at(end + 800 + n * 60, function () { out.textContent = String(100 + n); }); })(n);
-      at(end + 800 + 10 * 60 + 60, function () { outCard.classList.add('paid'); });
+      steps.forEach(function (el, i) { at(150 + i * 380, function () { el.classList.add('show'); }); });
+      at(150 + steps.length * 380 + 250, function () { outCard.classList.add('paid'); });
     }
     reset();
     new IntersectionObserver(function (entries) {
