@@ -238,6 +238,17 @@
     .upsell h2 { color: #faf7ed; font-size: clamp(28px, 3.4vw, 38px); }
     .upsell p { margin: 14px 0 24px; font-size: 16px; }
     .upsell .btn { background: var(--gold); color: var(--ink); }
+    .send-form { max-width: 420px; margin: 0 auto; display: grid; gap: 10px; text-align: left; }
+    .send-form input { width: 100%; font: inherit; font-size: 16px; padding: 16px 18px; border: 1px solid var(--hairline); background: #fff; color: var(--ink); border-radius: 0; }
+    .send-form input:focus { outline: 2px solid var(--ink); outline-offset: -1px; border-color: var(--ink); }
+    .send-form input[aria-invalid="true"] { border-color: #a03a2a; }
+    .send-form .btn { justify-content: center; margin-top: 4px; border: 0; cursor: pointer; }
+    .send-form .btn[disabled] { opacity: .6; cursor: default; }
+    .send-form .btn-meta { text-align: center; margin-top: 6px; }
+    .form-err { color: #a03a2a; font-size: 14px; min-height: 0; }
+    .form-err:empty { display: none; }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .hp { position: absolute; left: -9999px; }
   </style>
 
   <!-- Mouseflow: session recordings + heatmaps -->
@@ -287,10 +298,24 @@
       <img src="../img/playbook-mockup.png" alt="The 10K Follower Playbook" width="798" height="1030">
     </picture>
     <div class="eyebrow" style="justify-content:center">You're in</div>
-    <h1>Here's your playbook.</h1>
-    <p class="lead">Download it now and save it somewhere you'll see it every day. A receipt is on its way to your email.</p>
-    <a href="https://drive.google.com/uc?export=download&id=1jDKrE-7PjuElMhjDPnPJepXcxu4DPWve" class="btn" target="_blank" rel="noopener">Download the PDF <span class="arrow">&darr;</span></a>
-    <p class="btn-meta">24 pages<span class="sep">&middot;</span>Works on phone, tablet, and computer</p>
+    <h1 id="ty-title">Where should we send it?</h1>
+    <p class="lead" id="ty-lead">Drop your name and email and we'll send the playbook straight to your inbox, plus the tips that go with it.</p>
+
+    <form class="send-form" id="send-form" novalidate>
+      <label class="sr" for="f-name">First name</label>
+      <input id="f-name" name="name" type="text" autocomplete="given-name" placeholder="First name" required>
+      <label class="sr" for="f-email">Email</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" placeholder="Email you want it sent to" required>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <p class="form-err" id="form-err" role="alert"></p>
+      <button class="btn" type="submit" id="send-btn">Send me the playbook <span class="arrow">&rarr;</span></button>
+      <p class="btn-meta">Use the same email you paid with so it's easy to find.</p>
+    </form>
+
+    <div id="dl" hidden>
+      <a href="https://drive.google.com/uc?export=download&id=1jDKrE-7PjuElMhjDPnPJepXcxu4DPWve" class="btn" target="_blank" rel="noopener">Download the PDF now <span class="arrow">&darr;</span></a>
+      <p class="btn-meta">24 pages<span class="sep">&middot;</span>Works on phone, tablet, and computer</p>
+    </div>
 
     <div class="steps">
       <div><b>01</b><span><strong>Read pages 2 to 7 today.</strong> The math and the rules. Everything else sits on top of them.</span></div>
@@ -314,5 +339,59 @@
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    // Same MailerLite form as the old free opt-in (account 2346542, form
+    // 200539719975568936). Joining it adds the buyer to the playbook group,
+    // which starts the nurture automation (Email 1 delivers the playbook).
+    var ENDPOINT = 'https://assets.mailerlite.com/jsonp/2346542/forms/200539719975568936/subscribe';
+    var form = document.getElementById('send-form');
+    var nameEl = document.getElementById('f-name');
+    var emailEl = document.getElementById('f-email');
+    var err = document.getElementById('form-err');
+    var btn = document.getElementById('send-btn');
+
+    function showDone(name) {
+      form.hidden = true;
+      document.getElementById('dl').hidden = false;
+      document.getElementById('ty-title').textContent = "It's on the way" + (name ? ', ' + name : '') + '.';
+      document.getElementById('ty-lead').textContent = "Check your inbox in the next few minutes. Don't want to wait? Grab it right here.";
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.textContent = '';
+      var name = nameEl.value.trim(), email = emailEl.value.trim();
+      nameEl.removeAttribute('aria-invalid'); emailEl.removeAttribute('aria-invalid');
+      if (!name) { nameEl.setAttribute('aria-invalid', 'true'); err.textContent = 'Add your first name.'; nameEl.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailEl.setAttribute('aria-invalid', 'true'); err.textContent = 'That email doesn\'t look right.'; emailEl.focus(); return; }
+      if (form.website.value) { showDone(name); return; }
+
+      btn.disabled = true;
+      var data = new URLSearchParams();
+      data.set('fields[name]', name);
+      data.set('fields[email]', email);
+      data.set('ml-submit', '1');
+      data.set('anticsrf', 'true');
+      data.set('ajax', '1');
+
+      fetch(ENDPOINT, { method: 'POST', body: data })
+        .then(function (res) { return res.json().catch(function () { return {}; }); })
+        .then(function (json) {
+          var msg = json && json.errors && json.errors.fields && json.errors.fields.email;
+          if (msg) {
+            btn.disabled = false;
+            emailEl.setAttribute('aria-invalid', 'true');
+            err.textContent = Array.isArray(msg) ? msg[0] : String(msg);
+            return;
+          }
+          if (window.fbq) fbq('track', 'Lead', { content_name: '10K Follower Playbook buyer' });
+          showDone(name);
+        })
+        .catch(function () { showDone(name); });
+    });
+  })();
+</script>
 </body>
 </html>
